@@ -3,8 +3,6 @@ package com.example.sample.business;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BinaryOperator;
-import java.util.stream.Collectors;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +72,7 @@ public class UserBusiness {
 	public List<User> getAllUsers() throws Exception{
 		log.info("Getting all the User details ");
 		List<User> userList = userRepository.findAll();
-		userList.stream().sorted(Comparator.comparing(User::getLastName));
+		userList.sort(Comparator.comparing(User::getLastName));
 		return userList;
 	}
 	
